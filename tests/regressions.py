@@ -29,5 +29,5 @@ class FalsyComparisonTests(unittest.TestCase):
         self.assertEqual(template.render({'value': ''}), 'yes')
 
     def test_explicit_zero_overrides_select_key(self):
-        template = Template('selected', '{@select key=1}{@eq key=0 value=0}yes{/eq}{/select}')
-        self.assertEqual(template.render({}), 'yes')
+        template = Template('selected', '{@select key=1}{@eq key=value value=0}yes{/eq}{/select}')
+        self.assertEqual(template.render({'value': 0}), 'yes')
